@@ -1,9 +1,9 @@
 public class Board {
 
+    char[][] cells = new char[3][3];
 
-    public static void main(String[] args){
+    public Board(){
 
-        char[][] cells = new char[3][3];
         for (int row = 0; row < cells.length; row++) {
             for (int col = 0; col < cells.length; col++) {
                 cells[row][col] = '1';
@@ -45,7 +45,6 @@ public class Board {
     }
 
     /*public static void clear(){
-
     }*/
 
     public static void print(char[][] cells){

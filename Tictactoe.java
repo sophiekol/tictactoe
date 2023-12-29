@@ -42,15 +42,27 @@ public class Tictactoe {
         }
 
         Board.place(row,col, currentPlayer.getMarker(), board1.getCells());
-        this.currentPlayer = player2;
-
-        System.out.println("    Current Player " + currentPlayer.getMarker());
+        switchCurrentPlayer();
 
 
     }
 
 
     private void switchCurrentPlayer(){
+        currentPlayer = (currentPlayer == player1) ? player2 : player1;
+        System.out.println("    Current Player " + currentPlayer.getMarker());
+    }
+
+    private boolean hasWinner(char[][]cells, Player player){
+
+        // check if player won through rows
+
+        for(int row = 0; row < cells.length; row++ ){
+            if(cells[row][0] == player.getMarker() && cells[row][1] == player.getMarker() && cells[row][2] == player.getMarker()){
+                return true;
+            }
+        }
+
 
     }
 

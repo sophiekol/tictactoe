@@ -63,6 +63,21 @@ public class Tictactoe {
             }
         }
 
+        // same with colums
+        for(int col = 0; col < cells.length; col++ ){
+            if(cells[0][col] == player.getMarker() && cells[1][col] == player.getMarker() && cells[2][col] == player.getMarker()){
+                return true;
+            }
+        }
+
+        if(cells[0][0] == player.getMarker() && cells[1][1] == player.getMarker() && cells[2][2] == player.getMarker()){
+            return true;
+        }
+        if ( cells[2][0] == player.getMarker() && cells[1][1] == player.getMarker() && cells[0][2] == player.getMarker()){
+            return true;
+        }
+
+        return false;
 
     }
 

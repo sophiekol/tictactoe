@@ -19,16 +19,13 @@ public class Board {
         return cells;
     }
 
-    public static boolean isCellEmpty( int row, int col, char[][] cells){
+    public static boolean isCellEmpty( int row, int col, char[][] cells) {
 
-        boolean empty;
-
-        if(cells[row][col] == ' '){
-            empty = true;
-        }else {
-            empty = false;
+        if (cells[row][col] == ' ') {
+            return true;
         }
-        return empty;
+
+        return false;
     }
 
     public static void place(int row, int col, char marker, char[][] cells){

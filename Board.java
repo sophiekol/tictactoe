@@ -1,4 +1,4 @@
-import java.util.Scanner;
+
 
 public class Board {
 
@@ -39,28 +39,26 @@ public class Board {
         print(cells);
     }
 
-    public static boolean isFull(int row, int col, char[][] cells){
+    public static boolean isFull(char[][] cells){
 
-        if(cells[row][col] == ' '){
-            return false;
-        }else{
-
-
-            return true;
-        }
-
-        /*for (int row = 0; row < cells.length; row++) {
+        for (int row = 0; row < cells.length; row++) {
             for (int col = 0; col < cells.length; col++) {
                 if (cells[row][col] == ' ') {
                     return false;
                 }
             }
-        }*/
-
+        }
+        return true;
     }
 
-    /*public static void clear(){
-    }*/
+    public static void clear(char[][] cells){
+        for (int row = 0; row < cells.length; row++) {
+            for (int col = 0; col < cells.length; col++) {
+                cells[row][col] = ' ';
+            }
+        }
+
+    }
 
     public static void print(char[][] cells){
 

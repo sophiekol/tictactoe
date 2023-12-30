@@ -6,7 +6,7 @@ public class Tictactoe {
     static private Player player1;
     static private Player player2;
     static private Player currentPlayer;
-    private Board board;
+    private Board board1;
 
     public Tictactoe() {
         this.player1 = new Player('X');
@@ -26,24 +26,33 @@ public class Tictactoe {
 
     public void start(){
 
-        Board board1 = new Board();
+        this.board1 = new Board();
 
-        Scanner scan = new Scanner(System.in);
-        System.out.println(("Enter in which row you want to place ur marker(0-2)"));
-        int row = scan.nextInt();
-        if(row > 2){
-            System.out.println("Error row");
+        while(!hasWinner(board1.getCells(), currentPlayer)) {
+
+            Scanner scan = new Scanner(System.in);
+            System.out.println(("Enter in which row you want to place ur marker(0-2)"));
+            int row = scan.nextInt();
+            if (row > 2) {
+                System.out.println("Error row");
+            }
+
+            System.out.println(("Enter in which colum you want to place ur marker(0-2)"));
+            int col = scan.nextInt();
+            if (col > 2) {
+                System.out.println("Error col");
+            }
+
+            if(board1.getCells()[row][col] == ' '){
+                Board.place(row, col, currentPlayer.getMarker(), board1.getCells());
+                switchCurrentPlayer();
+                hasWinner(board1.getCells(), currentPlayer);
+
+            }else{
+                System.out.println("Wrong move try again");
+            }
+
         }
-
-        System.out.println(("Enter in which colum you want to place ur marker(0-2)"));
-        int col = scan.nextInt();
-        if(col > 2){
-            System.out.println("Error col");
-        }
-
-        Board.place(row,col, currentPlayer.getMarker(), board1.getCells());
-        switchCurrentPlayer();
-
 
     }
 
@@ -53,7 +62,7 @@ public class Tictactoe {
         System.out.println("    Current Player " + currentPlayer.getMarker());
     }
 
-    private boolean hasWinner(char[][]cells, Player player){
+    private boolean hasWinner(char[][] cells, Player player){
 
         // check if player won through rows
 

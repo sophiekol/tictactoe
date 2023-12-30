@@ -39,18 +39,24 @@ public class Board {
         print(cells);
     }
 
-    public static boolean isFull(char[][] cells){
+    public static boolean isFull(int row, int col, char[][] cells){
 
-        boolean isFull = true;
-        for (int row = 0; row < cells.length; row++) {
+        if(cells[row][col] == ' '){
+            return false;
+        }else{
+
+
+            return true;
+        }
+
+        /*for (int row = 0; row < cells.length; row++) {
             for (int col = 0; col < cells.length; col++) {
                 if (cells[row][col] == ' ') {
-                    isFull = false;
-                    break;
+                    return false;
                 }
             }
-        }
-        return isFull;
+        }*/
+
     }
 
     /*public static void clear(){

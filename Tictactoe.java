@@ -52,8 +52,20 @@ public class Tictactoe {
                 System.out.println();
                 System.out.println("  The Game ended in a tie!");
             }
-
         }
+
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Do you want to restart game? y/n");
+        char decision = scan.next().charAt(0);
+
+        if(decision == 'Y' || decision == 'y'){
+            board1.clear(board1.getCells());
+            Tictactoe game = new Tictactoe();
+            game.start();
+        }else {
+            System.out.println("  Thank you for playing!");
+        }
+
     }
 
 

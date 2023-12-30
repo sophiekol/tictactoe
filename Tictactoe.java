@@ -2,11 +2,9 @@ import java.util.Scanner;
 
 public class Tictactoe {
 
-
     static private Player player1;
     static private Player player2;
     static private Player currentPlayer;
-
     static private Board board1;
 
     public Tictactoe() {
@@ -40,7 +38,7 @@ public class Tictactoe {
             System.out.println(("Enter in which colum you want to place ur marker(0-2)"));
             int col = scan.nextInt();
 
-            if ((row >= 0 && row <= 2) && (col >= 0 && col <= 2) && board1.getCells()[row][col] == ' ') {
+            if ((row >= 0 && row <= 2) && (col >= 0 && col <= 2) && board1.isCellEmpty(row, col, board1.getCells())) {
                 Board.place(row, col, currentPlayer.getMarker(), board1.getCells());
                 over = hasWinner(board1.getCells(), currentPlayer);
                 switchCurrentPlayer(over);

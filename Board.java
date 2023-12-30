@@ -41,16 +41,14 @@ public class Board {
 
     public static boolean isFull(char[][] cells){
 
-        boolean isFull = true;
         for (int row = 0; row < cells.length; row++) {
             for (int col = 0; col < cells.length; col++) {
                 if (cells[row][col] == ' ') {
-                    isFull = false;
-                    break;
+                    return false;
                 }
             }
         }
-        return isFull;
+        return true;
     }
 
     /*public static void clear(){

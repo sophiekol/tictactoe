@@ -2,7 +2,7 @@
 
 public class Board {
 
-    private char[][] cells = new char[3][3];
+    protected char[][] cells = new char[3][3];
 
     public Board(){
 

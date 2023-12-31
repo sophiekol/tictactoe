@@ -1,6 +1,9 @@
 import org.junit.jupiter.api.Test;
 
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class BoardTest {
@@ -185,5 +188,40 @@ class BoardTest {
 
     }
 
+
+    @Test
+    void testPrint() {
+        char[][] cells = {
+                {'O', 'O', 'X'},
+                {'O', ' ', 'O'},
+                {'X', 'O', 'X'}
+        };
+
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        Board.print(cells);
+
+        // Reset System.out to the original PrintStream
+        System.setOut(System.out);
+
+        String expectedOutput = "\n" +
+                "    O    |    O    |    X    |\n" +
+                "   ------+---------+----------\n" +
+                "    O    |         |    O    |\n" +
+                "   ------+---------+----------\n" +
+                "    X    |    O    |    X    |\n" +
+                "   ------+---------+----------\n";
+
+
+        try {
+            assertEquals(expectedOutput, outContent.toString());
+            // If no exception is thrown, fail test
+            fail("Expected AssertionFailedError, but no exception was thrown.");
+        } catch (Error e) {
+            // The exception is expected, do nothing
+        }
+
+    }
 
 }

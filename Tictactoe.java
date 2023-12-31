@@ -2,10 +2,10 @@ import java.util.Scanner;
 
 public class Tictactoe {
 
-    static private Player player1;
-    static private Player player2;
-    static private Player currentPlayer;
-    static private Board board1;
+    static protected Player player1;
+    static protected Player player2;
+    static protected Player currentPlayer;
+    static protected Board board1;
 
     public Tictactoe() {
         player1 = new Player('X');
@@ -38,7 +38,7 @@ public class Tictactoe {
             System.out.println(("Enter in which colum you want to place ur marker(0-2)"));
             int col = scan.nextInt();
 
-            if ((row >= 0 && row <= 2) && (col >= 0 && col <= 2) && board1.isCellEmpty(row, col, board1.getCells())) {
+            if ((row >= 0 && row <= 2) && (col >= 0 && col <= 2) && Board.isCellEmpty(row, col, board1.getCells())) {
                 Board.place(row, col, currentPlayer.getMarker(), board1.getCells());
                 over = hasWinner(board1.getCells(), currentPlayer);
                 switchCurrentPlayer(over);
@@ -68,36 +68,36 @@ public class Tictactoe {
 
     }
 
-    private void switchCurrentPlayer(boolean over){
+    protected static void switchCurrentPlayer(boolean over){
         if(!over) {
             currentPlayer = (currentPlayer == player1) ? player2 : player1;
             System.out.println("    Current Player " + currentPlayer.getMarker());
         }
     }
 
-    private boolean hasWinner(char[][]cells, Player player){
+    protected static boolean hasWinner(char[][] cells, Player currentPlayer){
 
         // check if player won through rows
         for(int row = 0; row < cells.length; row++ ){
-            if(cells[row][0] == player.getMarker() && cells[row][1] == player.getMarker() && cells[row][2] == player.getMarker()){
+            if(cells[row][0] == currentPlayer.getMarker() && cells[row][1] == currentPlayer.getMarker() && cells[row][2] == currentPlayer.getMarker()){
                 System.out.println("  CONGRATS WINNER IS PLAYER:  " + currentPlayer.getMarker());
                 return true;
             }
         }
 
-        // same with colums
+        // same with cols
         for(int col = 0; col < cells.length; col++ ){
-            if(cells[0][col] == player.getMarker() && cells[1][col] == player.getMarker() && cells[2][col] == player.getMarker()){
+            if(cells[0][col] == currentPlayer.getMarker() && cells[1][col] == currentPlayer.getMarker() && cells[2][col] == currentPlayer.getMarker()){
                 System.out.println("  CONGRATS WINNER IS PLAYER:  " + currentPlayer.getMarker());
                 return true;
             }
         }
 
-        if(cells[0][0] == player.getMarker() && cells[1][1] == player.getMarker() && cells[2][2] == player.getMarker()){
+        if(cells[0][0] == currentPlayer.getMarker() && cells[1][1] == currentPlayer.getMarker() && cells[2][2] == currentPlayer.getMarker()){
             System.out.println("  CONGRATS WINNER IS PLAYER:  " + currentPlayer.getMarker());
             return true;
         }
-        if ( cells[2][0] == player.getMarker() && cells[1][1] == player.getMarker() && cells[0][2] == player.getMarker()){
+        if ( cells[2][0] == currentPlayer.getMarker() && cells[1][1] == currentPlayer.getMarker() && cells[0][2] == currentPlayer.getMarker()){
             System.out.println("  CONGRATS WINNER IS PLAYER:  " + currentPlayer.getMarker());
             return true;
         }
